@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = Transmitly.ChannelProvider.Firebase
+build_property.ProjectDir = O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

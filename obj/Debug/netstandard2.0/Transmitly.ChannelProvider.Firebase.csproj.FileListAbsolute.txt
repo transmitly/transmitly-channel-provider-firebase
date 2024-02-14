@@ -1,0 +1,14 @@
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.csproj.AssemblyReference.cache
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.GeneratedMSBuildEditorConfig.editorconfig
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.AssemblyInfoInputs.cache
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.AssemblyInfo.cs
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.csproj.CoreCompileInputs.cache
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.sourcelink.json
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\bin\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.deps.json
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\bin\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.dll
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\bin\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.pdb
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\bin\Debug\netstandard2.0\Transmitly.dll
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\bin\Debug\netstandard2.0\Transmitly.pdb
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmit.06A82A5E.Up2Date
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.dll
+O:\CiLabs\OpenSource\Transmitly\src\ChannelProviders\Transmitly.ChannelProvider.Firebase\obj\Debug\netstandard2.0\Transmitly.ChannelProvider.Firebase.pdb
