@@ -19,7 +19,7 @@
 		<PackageIcon>icon-dark.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/transmitly/transmitly-channel-provider-firebase.git</RepositoryUrl>
-		<PackageTags>email,mailkit,channel provider,transmitly</PackageTags>
+		<PackageTags>push;push notifications;firebase;ios;android;web</PackageTags>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -27,6 +27,16 @@
 	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Include="..\..\assets\icon-dark.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="FirebaseAdmin" Version="2.4.0" />
 		<PackageReference Include="Transmitly" Version="0.1.0-*" />
