@@ -14,6 +14,7 @@ Then add the channel provider using `AddFirebaseSupport()`:
 
 ```csharp
 using Transmitly;
+using Google.Apis.Auth.OAuth2;
 ...
 var communicationClient = new CommunicationsClientBuilder()
 	.AddFirebaseSupport(options =>
