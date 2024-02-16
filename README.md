@@ -1,6 +1,6 @@
 # Transmitly.ChannelProvider.Firebase
 
-A [Transmitly](https://github.com/transmitly/transmitly) channel provider that enables sending push notifications to iOS, Android and other devices using firebase.
+A [Transmitly](https://github.com/transmitly/transmitly) channel provider that enables sending push notifications to iOS, Android and other apps/devices using [firebase](https://firebase.google.com/).
 
 ### Getting started
 
