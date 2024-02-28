@@ -31,17 +31,13 @@ namespace Transmitly
 			return $"{FirebaseId}.{(!string.IsNullOrWhiteSpace(providerId) ? providerId : DefaultProviderId)}";
 		}
 
-		public static CommunicationsClientBuilder AddFirebaseSupport(this ChannelProviderConfigurationBuilder channelProviderConfiguration, Action<AppOptions> options, string? providerId = null)
+		public static CommunicationsClientBuilder AddFirebaseSupport(this CommunicationsClientBuilder communicationsClientBuilder, Action<AppOptions> options, string? providerId = null)
 		{
 			var optionObj = new AppOptions();
 			options(optionObj);
 
-			return channelProviderConfiguration.Add(Id.ChannelProvider.Firebase(providerId), new FirebaseChannelProviderClient(optionObj), Id.Channel.PushNotification());
-		}
-
-		public static CommunicationsClientBuilder AddFirebaseSupport(this CommunicationsClientBuilder communicationsClientBuilder, Action<AppOptions> options, string? providerId = null)
-		{
-			return communicationsClientBuilder.ChannelProvider.AddFirebaseSupport(options, providerId);
+			communicationsClientBuilder.AddChannelProvider<FirebaseChannelProviderClient, IPushNotification>(Id.ChannelProvider.Firebase(providerId), optionObj, Id.Channel.PushNotification());
+			return communicationsClientBuilder;
 		}
 	}
 }
