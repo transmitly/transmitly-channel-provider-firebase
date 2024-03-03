@@ -22,13 +22,11 @@ namespace Transmitly
 	public static class FirebaseChannelProviderExtensions
 	{
 		private const string FirebaseId = "Google.Firebase";
-		private const string DefaultProviderId = "Default";
 
-		public static string Firebase(this ChannelProviders channelProviders, string? providerId = DefaultProviderId)
+		public static string Firebase(this ChannelProviders channelProviders, string? providerId = null)
 		{
 			Guard.AgainstNull(channelProviders);
-
-			return $"{FirebaseId}.{(!string.IsNullOrWhiteSpace(providerId) ? providerId : DefaultProviderId)}";
+			return channelProviders.GetId(FirebaseId, providerId);
 		}
 
 		public static CommunicationsClientBuilder AddFirebaseSupport(this CommunicationsClientBuilder communicationsClientBuilder, Action<AppOptions> options, string? providerId = null)
