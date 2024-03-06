@@ -13,6 +13,7 @@
 //  limitations under the License.
 
 using FirebaseAdmin.Messaging;
+using System;
 
 namespace Transmitly.ChannelProvider.Firebase
 {
@@ -24,7 +25,7 @@ namespace Transmitly.ChannelProvider.Firebase
 		}
 		public FirebaseDispatchResult(SendResponse response)
 		{
-			DispatchStatus = response.IsSuccess? DispatchStatus.Delivered : DispatchStatus.Error;
+			DispatchStatus = response.IsSuccess ? DispatchStatus.Delivered : DispatchStatus.Error;
 			ResourceId = response.MessageId;
 		}
 		public string? ResourceId { get; set; }
@@ -34,5 +35,7 @@ namespace Transmitly.ChannelProvider.Firebase
 		public string? ChannelProviderId { get; }
 
 		public string? ChannelId { get; }
+
+		public Exception? Exception { get; set; }
 	}
 }
