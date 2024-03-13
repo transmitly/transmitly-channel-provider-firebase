@@ -25,7 +25,7 @@ jobs:
       #- name: Test
       #  run: dotnet test --no-build --no-restore --configuration Debug Transmitly.sln
       - name: Package
-        run: dotnet pack Transmitly.ChannelProvider.Firebase.sln --no-build --include-source /p:Version=${{ env.majorMinorPatch }}-${{env.buildMetaData}}.${{ env.shortSha }} -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
+        run: dotnet pack Transmitly.ChannelProvider.Firebase.sln --no-build --include-source --configuration Debug /p:Version=${{ env.majorMinorPatch }}-${{env.buildMetaData}}.${{ env.shortSha }} -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
       - name: Publish Nuget
         run: dotnet nuget push src\Transmitly.ChannelProvider.Firebase\bin\Debug\Transmitly.ChannelProvider.Firebase*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
       - name: Add github source
