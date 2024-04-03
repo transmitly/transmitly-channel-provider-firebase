@@ -25,7 +25,7 @@ namespace Transmitly.ChannelProvider.Firebase
 		}
 		public FirebaseDispatchResult(SendResponse response)
 		{
-			DispatchStatus = response.IsSuccess ? DispatchStatus.Delivered : DispatchStatus.Error;
+			DispatchStatus = response.IsSuccess ? DispatchStatus.Delivered : DispatchStatus.Exception;
 			ResourceId = response.MessageId;
 		}
 		public string? ResourceId { get; set; }
