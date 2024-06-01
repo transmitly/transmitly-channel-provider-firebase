@@ -44,8 +44,8 @@ namespace Transmitly.ChannelProvider.Firebase
 						Body = communication.Body,
 						ImageUrl = communication.ImageUrl
 					},
-					Token = recipient.IfType(AudienceAddress.Types.DeviceToken(), recipient.Value),
-					Topic = recipient.IfType(AudienceAddress.Types.Topic(), recipient.Value)
+					Token = recipient.IfType(IdentityAddress.Types.DeviceToken(), recipient.Value),
+					Topic = recipient.IfType(IdentityAddress.Types.Topic(), recipient.Value)
 				});
 			}
 

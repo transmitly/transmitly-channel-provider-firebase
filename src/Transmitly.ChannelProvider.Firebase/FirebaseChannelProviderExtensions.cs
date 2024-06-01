@@ -14,7 +14,6 @@
 
 using FirebaseAdmin;
 using System;
-using Transmitly.Channel.Configuration;
 using Transmitly.ChannelProvider.Firebase;
 
 namespace Transmitly
@@ -34,7 +33,12 @@ namespace Transmitly
 			var optionObj = new AppOptions();
 			options(optionObj);
 
-			communicationsClientBuilder.AddChannelProvider<FirebaseChannelProviderClient, IPushNotification>(Id.ChannelProvider.Firebase(providerId), optionObj, Id.Channel.PushNotification());
+			communicationsClientBuilder
+				.ChannelProvider
+				.Build(Id.ChannelProvider.Firebase(providerId), optionObj)
+				.AddClient<FirebaseChannelProviderClient, IPushNotification>(Id.Channel.PushNotification())
+				.Register();
+
 			return communicationsClientBuilder;
 		}
 	}
