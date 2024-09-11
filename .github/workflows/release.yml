@@ -1,6 +1,5 @@
 name: Release
-
-on: 
+on:
   push:
     tags:
     - "v[0-9]+.[0-9]+.[0-9]+"
@@ -9,8 +8,7 @@ jobs:
   windows-build:
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Verify commit exists in origin/main
@@ -18,11 +16,11 @@ jobs:
           git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
           git branch --remote --contains | grep origin/main
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v3.0.0
+        uses: gittools/actions/gitversion/setup@v0
         with:
-          versionSpec: '6.x'
+          versionSpec: '5.x'
       - name: Determine Version
-        uses: gittools/actions/gitversion/execute@v3.0.0
+        uses: gittools/actions/gitversion/execute@v0
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
       - name: dotnet
@@ -30,10 +28,13 @@ jobs:
       - name: Build netcore solution
         run: dotnet build Transmitly.ChannelProvider.Firebase.sln --configuration Release -p:AssemblyVersion=${{ env.majorMinorPatch }} -p:FileVersion=${{ env.majorMinorPatch }} -p:InformationalVersion=${{ env.informationalVersion }}
       - name: Package
-        run: dotnet pack --no-build --include-source /p:Version=${{ env.majorMinorPatch }} --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
+        run: dotnet pack Transmitly.ChannelProvider.Firebase.sln --configuration Release --no-build --include-source /p:Version=${{ env.majorMinorPatch }} -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
       - name: Publish Nuget
-        run: dotnet nuget push src\Transmitly.ChannelProvider.Firebase\bin\Release\Transmitly.ChannelProvider.Firebase*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push src\Transmitly.ChannelProvider.Firebase\bin\Release\Transmitly.ChannelProvider.Firebase*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
       - name: Add github source
         run: dotnet nuget add source --username ${{ secrets.PUBLISH_GITHUB_USERNAME }} --password ${{ secrets.PUBLISH_GITHUB_PACKAGE_API_KEY }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/transmitly/index.json"
       - name: Publish (Github)
         run: dotnet nuget push src\Transmitly.ChannelProvider.Firebase\bin\Release\Transmitly.ChannelProvider.Firebase*.nupkg --api-key ${{secrets.PUBLISH_GITHUB_PACKAGE_API_KEY}} --source "github"
+
+
+        
