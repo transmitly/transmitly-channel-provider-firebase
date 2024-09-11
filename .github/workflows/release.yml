@@ -18,7 +18,7 @@ jobs:
           git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
           git branch --remote --contains | grep origin/main
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@3.0.0
+        uses: gittools/actions/gitversion/setup@v3.0.0
         with:
           versionSpec: '6.x'
       - name: Determine Version
