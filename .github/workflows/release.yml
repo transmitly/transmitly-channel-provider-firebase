@@ -21,6 +21,8 @@ jobs:
           versionSpec: '5.x'
       - name: Determine Version
         uses: gittools/actions/gitversion/execute@v0
+        with:
+          disableShallowCloneCheck: true
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
       - name: dotnet
