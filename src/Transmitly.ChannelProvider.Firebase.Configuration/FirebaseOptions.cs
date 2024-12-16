@@ -12,30 +12,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using FirebaseAdmin.Messaging;
-using System;
-
-namespace Transmitly.ChannelProvider.Firebase
+namespace Transmitly
 {
-	internal sealed class FirebaseDispatchResult : IDispatchResult
-	{
-		public FirebaseDispatchResult()
-		{
-
-		}
-		public FirebaseDispatchResult(SendResponse response)
-		{
-			DispatchStatus = response.IsSuccess ? DispatchStatus.Delivered : DispatchStatus.Exception;
-			ResourceId = response.MessageId;
-		}
-		public string? ResourceId { get; set; }
-
-		public DispatchStatus DispatchStatus { get; set; }
-
-		public string? ChannelProviderId { get; }
-
-		public string? ChannelId { get; }
-
-		public Exception? Exception { get; set; }
-	}
+    public sealed class FirebaseOptions
+    {
+        public FirebaseCredential? Credential { get; set; }
+        public string? ProjectId{get;set; }
+        public string? ServiceAccountId{get;set; }
+        
+    }
 }

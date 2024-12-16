@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT'">net48;net472</TargetFrameworks>
+	  <TargetFrameworks>$(TargetFrameworks);netstandard2.0;net6.0</TargetFrameworks>
+	  <LangVersion>latest</LangVersion>
+	  <IsPackable>true</IsPackable>
+	  <AssemblyVersion>0.0.1</AssemblyVersion>
+	  <AssemblyFileVersion>0.0.1</AssemblyFileVersion>
+	  <PackageId>Transmitly.ChannelProvider.Firebase.FirebaseAdmin</PackageId>
+	  <Product>Transmitly</Product>
+	  <ProductName>Transmit.ly</ProductName>
+	  <Company>Code Impressions</Company>
+	  <Title>Transmit.ly Firebase Channel Provider</Title>
+	  <Description>A channel provider configuration library for Firebase.</Description>
+	  <Copyright>Copyright © (c) Code Impressions, LLC</Copyright>
+	  <Authors>Code Impressions</Authors>
+	  <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+	  <PackageIcon>icon-dark.png</PackageIcon>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <RepositoryUrl>https://github.com/transmitly/transmitly-channel-provider-firebase.git</RepositoryUrl>
+	  <PackageTags>push;push notifications;firebase;ios;android;web</PackageTags>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Transmitly" Version="0.1.0" />
+		<PackageReference Include="FirebaseAdmin" Version="2.4.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.Configuration\Transmitly.ChannelProvider.Firebase.Configuration.csproj" />
+	</ItemGroup>
+</Project>

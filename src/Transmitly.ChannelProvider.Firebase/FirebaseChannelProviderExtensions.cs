@@ -12,7 +12,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using FirebaseAdmin;
 using System;
 using Transmitly.ChannelProvider.Firebase;
 
@@ -20,7 +19,7 @@ namespace Transmitly
 {
 	public static class FirebaseChannelProviderExtensions
 	{
-		private const string FirebaseId = "Google.Firebase";
+		private const string FirebaseId = "Google.FirebaseAdmin";
 
 		public static string Firebase(this ChannelProviders channelProviders, string? providerId = null)
 		{
@@ -28,9 +27,9 @@ namespace Transmitly
 			return channelProviders.GetId(FirebaseId, providerId);
 		}
 
-		public static CommunicationsClientBuilder AddFirebaseSupport(this CommunicationsClientBuilder communicationsClientBuilder, Action<AppOptions> options, string? providerId = null)
+		public static CommunicationsClientBuilder AddFirebaseSupport(this CommunicationsClientBuilder communicationsClientBuilder, Action<FirebaseOptions> options, string? providerId = null)
 		{
-			var optionObj = new AppOptions();
+			var optionObj = new FirebaseOptions();
 			options(optionObj);
 
 			communicationsClientBuilder
