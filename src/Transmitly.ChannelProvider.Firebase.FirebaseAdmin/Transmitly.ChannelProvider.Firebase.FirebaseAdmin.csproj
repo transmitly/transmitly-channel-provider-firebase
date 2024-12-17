@@ -32,9 +32,6 @@
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">
 		<Reference Include="System.Net.Http" />
 	</ItemGroup>
-	<ItemGroup Condition="'$(GITHUB_ACTIONS)' != 'true' or '$(TF_BUILD)' != 'true'">
-	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.Configuration\Transmitly.ChannelProvider.Firebase.Configuration.csproj" />
-	</ItemGroup>
 	<ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true' or '$(TF_BUILD)' == 'true'">
 		<PackageReference Include="Transmitly.ChannelProvider.Firebase.Configuration" Version="0.1.0" />
 	</ItemGroup>

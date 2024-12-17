@@ -5,10 +5,6 @@ VisualStudioVersion = 17.9.34518.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transmitly.ChannelProvider.Firebase", "src\Transmitly.ChannelProvider.Firebase\Transmitly.ChannelProvider.Firebase.csproj", "{8BEFD6DA-DA02-40AB-A1D3-9EB7B1E06D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmitly.ChannelProvider.Firebase.Configuration", "src\Transmitly.ChannelProvider.Firebase.Configuration\Transmitly.ChannelProvider.Firebase.Configuration.csproj", "{495E4D69-8A96-4813-BA80-6C3F28F3F678}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmitly.ChannelProvider.Firebase.FirebaseAdmin", "src\Transmitly.ChannelProvider.Firebase.FirebaseAdmin\Transmitly.ChannelProvider.Firebase.FirebaseAdmin.csproj", "{06361D91-F133-4373-9186-AA1834F6C6B0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{8BEFD6DA-DA02-40AB-A1D3-9EB7B1E06D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BEFD6DA-DA02-40AB-A1D3-9EB7B1E06D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BEFD6DA-DA02-40AB-A1D3-9EB7B1E06D57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{495E4D69-8A96-4813-BA80-6C3F28F3F678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{495E4D69-8A96-4813-BA80-6C3F28F3F678}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{495E4D69-8A96-4813-BA80-6C3F28F3F678}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{495E4D69-8A96-4813-BA80-6C3F28F3F678}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06361D91-F133-4373-9186-AA1834F6C6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06361D91-F133-4373-9186-AA1834F6C6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06361D91-F133-4373-9186-AA1834F6C6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06361D91-F133-4373-9186-AA1834F6C6B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
