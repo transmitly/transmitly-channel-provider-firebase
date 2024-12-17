@@ -53,8 +53,3 @@ namespace Transmitly
         }
     }
 }
-//return GoogleCredential.FromFile
-//return GoogleCredential.FromComputeCredential
-//return GoogleCredential.FromServiceAccountCredential
-//return GoogleCredential.FromStream
-//return GoogleCredential.GetApplicationDefault

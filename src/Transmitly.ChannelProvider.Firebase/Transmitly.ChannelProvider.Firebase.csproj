@@ -38,18 +38,16 @@
 	  </None>
 	</ItemGroup>
 	<ItemGroup>
-		
 		<PackageReference Include="Transmitly" Version="0.1.0" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+		<PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="All" />
 	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-		<PackageReference Include="PolySharp" Version="1.14.1" PrivateAssets="All" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">
-		<Reference Include="System.Net.Http" />
-	</ItemGroup>
-	<ItemGroup>
+	<ItemGroup Condition="'$(GITHUB_ACTIONS)' != 'true' or '$(TF_BUILD)' != 'true'">
 	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.Configuration\Transmitly.ChannelProvider.Firebase.Configuration.csproj" />
 	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.FirebaseAdmin\Transmitly.ChannelProvider.Firebase.FirebaseAdmin.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true' or '$(TF_BUILD)' == 'true'">
+		<PackageReference Include="Transmitly.ChannelProvider.Firebase.Configuration" Version="0.1.0" />
+		<PackageReference Include="Transmitly.ChannelProvider.Firebase.FirebaseAdmin" Version="0.1.0" />
 	</ItemGroup>
 </Project>
