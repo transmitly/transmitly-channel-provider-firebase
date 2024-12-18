@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
 	<PropertyGroup>
 		<TargetFrameworks Condition=" '$(OS)' == 'Windows_NT'">net48;net472</TargetFrameworks>
 		<TargetFrameworks>$(TargetFrameworks);netstandard2.0;net6.0</TargetFrameworks>
-		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<IsPackable>true</IsPackable>
 		<AssemblyVersion>0.0.1</AssemblyVersion>
 		<AssemblyFileVersion>0.0.1</AssemblyFileVersion>
-		<PackageId>Transmitly.ChannelProvider.Firebase</PackageId>
+		<PackageId>Transmitly.ChannelProvider.Firebase.Configuration</PackageId>
 		<Product>Transmitly</Product>
 		<ProductName>Transmit.ly</ProductName>
 		<Company>Code Impressions</Company>
-		<Title>Transmit.ly Firebase Channel Provider</Title>
-		<Description>A channel provider for the Transmitly communications library.</Description>
+		<Title>Transmit.ly Firebase Channel Provider Configuration</Title>
+		<Description>A channel provider configuration library for Firebase.</Description>
 		<Copyright>Copyright (c) Code Impressions, LLC</Copyright>
 		<Authors>Code Impressions</Authors>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -20,6 +20,8 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/transmitly/transmitly-channel-provider-firebase.git</RepositoryUrl>
 		<PackageTags>push;push notifications;firebase;ios;android;web</PackageTags>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -28,22 +30,18 @@
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 	<ItemGroup>
-	  <None Include="..\..\assets\icon-dark.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="..\..\README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+		<None Include="..\..\assets\icon-dark.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Transmitly" Version="0.1.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="All" />
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.Configuration\Transmitly.ChannelProvider.Firebase.Configuration.csproj" />
-	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.FirebaseAdmin\Transmitly.ChannelProvider.Firebase.FirebaseAdmin.csproj" />
 	</ItemGroup>
 </Project>
