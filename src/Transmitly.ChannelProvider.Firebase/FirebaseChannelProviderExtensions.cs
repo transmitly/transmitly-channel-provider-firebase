@@ -35,7 +35,7 @@ namespace Transmitly
 			communicationsClientBuilder
 				.ChannelProvider
 				.Build(Id.ChannelProvider.Firebase(providerId), optionObj)
-				.AddClient<FirebaseChannelProviderClient, IPushNotification>(Id.Channel.PushNotification())
+				.AddDispatcher<FirebaseChannelProviderClient, IPushNotification>(Id.Channel.PushNotification())
 				.Register();
 
 			return communicationsClientBuilder;

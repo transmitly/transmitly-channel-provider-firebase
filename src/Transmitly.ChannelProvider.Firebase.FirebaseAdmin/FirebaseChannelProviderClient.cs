@@ -18,7 +18,7 @@ using Transmitly.Channel.Push;
 
 namespace Transmitly.ChannelProvider.Firebase
 {
-    public sealed class FirebaseChannelProviderClient : ChannelProviderClient<IPushNotification>
+    public sealed class FirebaseChannelProviderClient : ChannelProviderDispatcher<IPushNotification>
     {
         public FirebaseChannelProviderClient(FirebaseOptions options)
         {
