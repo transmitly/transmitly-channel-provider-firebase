@@ -35,8 +35,9 @@ csharp_style_unused_value_expression_statement_preference = discard_variable:sil
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
-tab_width = 4
-indent_size = 4
+indent_style = tab
+indent_size = tab
+tab_size = 4
 end_of_line = crlf
 dotnet_style_coalesce_expression = true:suggestion
 dotnet_style_null_propagation = true:suggestion
@@ -53,7 +54,7 @@ dotnet_style_prefer_inferred_tuple_names = true:suggestion
 dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 dotnet_style_prefer_compound_assignment = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion
-dotnet_style_namespace_match_folder = true:suggestion
+dotnet_style_namespace_match_folder = false:silent
 [*.cs]
 #### Naming styles ####
 
@@ -84,6 +85,9 @@ dotnet_diagnostic.S4144.severity = silent
 
 # IDE0073: The file header is missing or not located at the top of the file
 dotnet_diagnostic.IDE0073.severity = error
+
+# CS1591: Missing XML comment for publicly visible type or member
+dotnet_diagnostic.CS1591.severity = none
 
 [*.{cs,vb}]
 #### Naming styles ####

@@ -18,52 +18,52 @@ using Transmitly.Channel.Push;
 
 namespace Transmitly.ChannelProvider.Firebase
 {
-    public sealed class FirebaseChannelProviderClient : ChannelProviderDispatcher<IPushNotification>
-    {
-        public FirebaseChannelProviderClient(FirebaseOptions options)
-        {
-            Guard.AgainstNull(options);
-            FirebaseApp.Create(FirebaseOptionsConverter.FromFirebaseOptions(options));
-        }
+	public sealed class FirebaseChannelProviderClient : ChannelProviderDispatcher<IPushNotification>
+	{
+		public FirebaseChannelProviderClient(FirebaseOptions options)
+		{
+			Guard.AgainstNull(options);
+			FirebaseApp.Create(FirebaseOptionsConverter.FromFirebaseOptions(options));
+		}
 
-        public override async Task<IReadOnlyCollection<IDispatchResult?>> DispatchAsync(IPushNotification communication, IDispatchCommunicationContext communicationContext, CancellationToken cancellationToken)
-        {
-            List<Message> messages = new(communication.To.Count);
-            foreach (var recipient in communication.To)
-            {
-                messages.Add(new Message
-                {
-                    Data = TryConvertToDictionary(communicationContext.ContentModel?.Model),
-                    Notification = new Notification
-                    {
-                        Title = communication.Title,
-                        Body = communication.Body,
-                        ImageUrl = communication.ImageUrl
-                    },
-                    Token = recipient.IfType(IdentityAddress.Types.DeviceToken(), recipient.Value),
-                    Topic = recipient.IfType(IdentityAddress.Types.Topic(), recipient.Value)
-                });
-            }
+		public override async Task<IReadOnlyCollection<IDispatchResult?>> DispatchAsync(IPushNotification communication, IDispatchCommunicationContext communicationContext, CancellationToken cancellationToken)
+		{
+			List<Message> messages = new(communication.To.Count);
+			foreach (var recipient in communication.To)
+			{
+				messages.Add(new Message
+				{
+					Data = TryConvertToDictionary(communicationContext.ContentModel?.Model),
+					Notification = new Notification
+					{
+						Title = communication.Title,
+						Body = communication.Body,
+						ImageUrl = communication.ImageUrl
+					},
+					Token = recipient.IfType(IdentityAddress.Types.DeviceToken(), recipient.Value),
+					Topic = recipient.IfType(IdentityAddress.Types.Topic(), recipient.Value)
+				});
+			}
 
-            var response = await FirebaseMessaging.DefaultInstance.SendAllAsync(messages, cancellationToken);
+			var response = await FirebaseMessaging.DefaultInstance.SendAllAsync(messages, cancellationToken);
 
-            return response.Responses.Select(m => new FirebaseDispatchResult(m)).ToList();
-        }
+			return response.Responses.Select(m => new FirebaseDispatchResult(m)).ToList();
+		}
 
-        private static Dictionary<string, string?>? TryConvertToDictionary(object? content)
-        {
-            try
-            {
-                if (content == null)
-                    return null;
-                var props = content.GetType().GetProperties();
-                var pairDictionary = props.ToDictionary(x => x.Name, x => x.GetValue(content, null)?.ToString());
-                return pairDictionary;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-    }
+		private static Dictionary<string, string?>? TryConvertToDictionary(object? content)
+		{
+			try
+			{
+				if (content == null)
+					return null;
+				var props = content.GetType().GetProperties();
+				var pairDictionary = props.ToDictionary(x => x.Name, x => x.GetValue(content, null)?.ToString());
+				return pairDictionary;
+			}
+			catch
+			{
+				return null;
+			}
+		}
+	}
 }

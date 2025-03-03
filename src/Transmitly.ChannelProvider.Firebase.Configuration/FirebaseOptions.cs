@@ -14,11 +14,11 @@
 
 namespace Transmitly
 {
-    public sealed class FirebaseOptions
-    {
-        public FirebaseCredential? Credential { get; set; }
-        public string? ProjectId{get;set; }
-        public string? ServiceAccountId{get;set; }
-        
-    }
+	public sealed class FirebaseOptions
+	{
+		public FirebaseCredential? Credential { get; set; }
+		public string? ProjectId { get; set; }
+		public string? ServiceAccountId { get; set; }
+
+	}
 }

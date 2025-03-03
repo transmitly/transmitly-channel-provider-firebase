@@ -15,41 +15,41 @@
 
 namespace Transmitly
 {
-    public sealed class FirebaseCredential
-    {
-        public string? Json { get; private set; }
-        public string? AccessToken { get; private set; }
-        public string? FilePath { get; private set; }
-        public Stream? Stream { get; private set; }
+	public sealed class FirebaseCredential
+	{
+		public string? Json { get; private set; }
+		public string? AccessToken { get; private set; }
+		public string? FilePath { get; private set; }
+		public Stream? Stream { get; private set; }
 
-        public bool IsStream => Stream != null;
-        public bool IsJson => !string.IsNullOrWhiteSpace(Json);
-        public bool IsAccessToken => !string.IsNullOrWhiteSpace(AccessToken);
-        public bool IsFilePath => !string.IsNullOrWhiteSpace(FilePath);
-        public bool IsDefault { get; private set; }
+		public bool IsStream => Stream != null;
+		public bool IsJson => !string.IsNullOrWhiteSpace(Json);
+		public bool IsAccessToken => !string.IsNullOrWhiteSpace(AccessToken);
+		public bool IsFilePath => !string.IsNullOrWhiteSpace(FilePath);
+		public bool IsDefault { get; private set; }
 
-        public static FirebaseCredential FromJson(string json)
-        {
-            return new FirebaseCredential { Json = json };
-        }
+		public static FirebaseCredential FromJson(string json)
+		{
+			return new FirebaseCredential { Json = json };
+		}
 
-        public static FirebaseCredential FromAccessToken(string accessToken)
-        {
-            return new FirebaseCredential { AccessToken = accessToken };
-        }
+		public static FirebaseCredential FromAccessToken(string accessToken)
+		{
+			return new FirebaseCredential { AccessToken = accessToken };
+		}
 
-        public static FirebaseCredential FromFile(string filePath)
-        {
-            return new FirebaseCredential { FilePath = filePath };
-        }
-        public static FirebaseCredential GetApplicationDefault()
-        {
-            return new FirebaseCredential { IsDefault = true };
-        }
-    
-        public static FirebaseCredential FromStream(Stream stream)
-        {
-            return new FirebaseCredential { Stream = stream };
-        }
-    }
+		public static FirebaseCredential FromFile(string filePath)
+		{
+			return new FirebaseCredential { FilePath = filePath };
+		}
+		public static FirebaseCredential GetApplicationDefault()
+		{
+			return new FirebaseCredential { IsDefault = true };
+		}
+
+		public static FirebaseCredential FromStream(Stream stream)
+		{
+			return new FirebaseCredential { Stream = stream };
+		}
+	}
 }

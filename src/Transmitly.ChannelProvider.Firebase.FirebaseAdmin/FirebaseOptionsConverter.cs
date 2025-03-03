@@ -17,39 +17,39 @@ using Google.Apis.Auth.OAuth2;
 
 namespace Transmitly.ChannelProvider.Firebase
 {
-    static class FirebaseOptionsConverter
-    {
-        public static AppOptions FromFirebaseOptions(FirebaseOptions options)
-        {
-            Guard.AgainstNull(options);
+	static class FirebaseOptionsConverter
+	{
+		public static AppOptions FromFirebaseOptions(FirebaseOptions options)
+		{
+			Guard.AgainstNull(options);
 
-            return new AppOptions
-            {
-                Credential = CreateCredential(options.Credential),
-                ProjectId = options.ProjectId,
-                ServiceAccountId = options.ServiceAccountId
-            };
-        }
+			return new AppOptions
+			{
+				Credential = CreateCredential(options.Credential),
+				ProjectId = options.ProjectId,
+				ServiceAccountId = options.ServiceAccountId
+			};
+		}
 
-        private static GoogleCredential? CreateCredential(FirebaseCredential? firebaseCredential)
-        {
-            if (firebaseCredential == null)
-                return null;
-            if (firebaseCredential.IsDefault)
-                return GoogleCredential.GetApplicationDefault();
-            if (firebaseCredential.IsAccessToken)
-                return GoogleCredential.FromAccessToken(firebaseCredential.AccessToken);
-            if (firebaseCredential.IsJson)
-                return GoogleCredential.FromAccessToken(firebaseCredential.AccessToken);
-            if (firebaseCredential.IsFilePath)
-                return GoogleCredential.FromFile(firebaseCredential.FilePath);
-            if (firebaseCredential.IsStream)
-                return GoogleCredential.FromStream(firebaseCredential.Stream);
+		private static GoogleCredential? CreateCredential(FirebaseCredential? firebaseCredential)
+		{
+			if (firebaseCredential == null)
+				return null;
+			if (firebaseCredential.IsDefault)
+				return GoogleCredential.GetApplicationDefault();
+			if (firebaseCredential.IsAccessToken)
+				return GoogleCredential.FromAccessToken(firebaseCredential.AccessToken);
+			if (firebaseCredential.IsJson)
+				return GoogleCredential.FromAccessToken(firebaseCredential.AccessToken);
+			if (firebaseCredential.IsFilePath)
+				return GoogleCredential.FromFile(firebaseCredential.FilePath);
+			if (firebaseCredential.IsStream)
+				return GoogleCredential.FromStream(firebaseCredential.Stream);
 
-            //GoogleCredential.FromComputeCredential
-            //GoogleCredential.FromServiceAccountCredential                       
+			//GoogleCredential.FromComputeCredential
+			//GoogleCredential.FromServiceAccountCredential                       
 
-            throw new NotSupportedException("No suitable credential method was found to generate a google credential.");
-        }
-    }
+			throw new NotSupportedException("No suitable credential method was found to generate a google credential.");
+		}
+	}
 }
