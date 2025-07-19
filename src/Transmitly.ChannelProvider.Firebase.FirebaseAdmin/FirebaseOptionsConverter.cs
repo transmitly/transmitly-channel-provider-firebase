@@ -14,8 +14,10 @@
 
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using Transmitly.ChannelProvider.Firebase.Configuration;
+using Transmitly.Util;
 
-namespace Transmitly.ChannelProvider.Firebase
+namespace Transmitly.ChannelProvider.Firebase.FirebaseAdmin
 {
 	static class FirebaseOptionsConverter
 	{

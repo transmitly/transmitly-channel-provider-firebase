@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 
-namespace Transmitly
+namespace Transmitly.ChannelProvider.Firebase.Configuration
 {
 	public sealed class FirebaseCredential
 	{

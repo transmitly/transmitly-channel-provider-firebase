@@ -14,11 +14,8 @@
 
 namespace Transmitly.ChannelProvider.Firebase.Configuration
 {
-	public sealed class FirebaseOptions
+	public static class FirebaseConstant
 	{
-		public FirebaseCredential? Credential { get; set; }
-		public string? ProjectId { get; set; }
-		public string? ServiceAccountId { get; set; }
-
+		public const string Id = "Firebase";
 	}
 }

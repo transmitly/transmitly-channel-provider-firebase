@@ -12,13 +12,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Transmitly.Util;
+
 namespace Transmitly.ChannelProvider.Firebase.Configuration
 {
-	public sealed class FirebaseOptions
+	public static class FirebaseChannelProviderConfigurationExtensions
 	{
-		public FirebaseCredential? Credential { get; set; }
-		public string? ProjectId { get; set; }
-		public string? ServiceAccountId { get; set; }
+		public static string Firebase(this ChannelProviders channelProviders, string? providerId = null)
+		{
+			Guard.AgainstNull(channelProviders);
+			return channelProviders.GetId(FirebaseConstant.Id, providerId);
+		}
 
 	}
 }
