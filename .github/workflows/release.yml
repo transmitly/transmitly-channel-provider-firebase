@@ -2,6 +2,8 @@
 # - Checkout is 'shallow' despite fetch-depth: 0
 # - Command failed: C:\hostedtoolcache\windows\GitVersion.Tool\6.0.2\dotnet-gitversion.exe with no error message  
 name: Release
+permissions:
+  contents: read
 on:
   push:
     tags:
