@@ -13,8 +13,9 @@
 //  limitations under the License.
 
 using FirebaseAdmin.Messaging;
+using Transmitly.ChannelProvider.Firebase.Configuration;
 
-namespace Transmitly.ChannelProvider.Firebase
+namespace Transmitly.ChannelProvider.Firebase.FirebaseAdmin
 {
 	sealed class FirebaseDispatchResult : IDispatchResult
 	{
@@ -24,16 +25,23 @@ namespace Transmitly.ChannelProvider.Firebase
 		}
 		public FirebaseDispatchResult(SendResponse response)
 		{
-			DispatchStatus = response.IsSuccess ? DispatchStatus.Delivered : DispatchStatus.Exception;
+			Status = response.IsSuccess ?
+				CommunicationsStatus.Success(FirebaseConstant.Id, "Delivered") :
+				CommunicationsStatus.ServerError(FirebaseConstant.Id, "Failed");
 			ResourceId = response.MessageId;
 		}
-		public string? ResourceId { get; set; }
 
-		public DispatchStatus DispatchStatus { get; set; }
+		public string? ResourceId { get; }
+
+		public CommunicationsStatus Status { get; } = CommunicationsStatus.ClientError(FirebaseConstant.Id, "Unknown");
 
 		public string? ChannelProviderId { get; }
 
 		public string? ChannelId { get; }
+
+		public string? PipelineId { get; }
+
+		public string? PipelineIntent { get; }
 
 		public Exception? Exception { get; set; }
 	}

@@ -13,20 +13,13 @@
 //  limitations under the License.
 
 using System;
-using Transmitly.ChannelProvider.Firebase;
+using Transmitly.ChannelProvider.Firebase.Configuration;
+using Transmitly.ChannelProvider.Firebase.FirebaseAdmin;
 
 namespace Transmitly
 {
 	public static class FirebaseChannelProviderExtensions
-	{
-		private const string FirebaseId = "Google.FirebaseAdmin";
-
-		public static string Firebase(this ChannelProviders channelProviders, string? providerId = null)
-		{
-			Guard.AgainstNull(channelProviders);
-			return channelProviders.GetId(FirebaseId, providerId);
-		}
-
+	{		
 		public static CommunicationsClientBuilder AddFirebaseSupport(this CommunicationsClientBuilder communicationsClientBuilder, Action<FirebaseOptions> options, string? providerId = null)
 		{
 			var optionObj = new FirebaseOptions();
@@ -35,7 +28,7 @@ namespace Transmitly
 			communicationsClientBuilder
 				.ChannelProvider
 				.Build(Id.ChannelProvider.Firebase(providerId), optionObj)
-				.AddDispatcher<FirebaseChannelProviderClient, IPushNotification>(Id.Channel.PushNotification())
+				.AddDispatcher<FirebaseAdminChannelProviderDispatcher, IPushNotification>(Id.Channel.PushNotification())
 				.Register();
 
 			return communicationsClientBuilder;

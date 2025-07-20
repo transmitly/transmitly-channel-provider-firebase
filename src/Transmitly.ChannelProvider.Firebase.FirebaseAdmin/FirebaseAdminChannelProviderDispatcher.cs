@@ -15,21 +15,24 @@
 using FirebaseAdmin;
 using FirebaseAdmin.Messaging;
 using Transmitly.Channel.Push;
+using Transmitly.ChannelProvider.Firebase.Configuration;
+using Transmitly.Util;
 
-namespace Transmitly.ChannelProvider.Firebase
+namespace Transmitly.ChannelProvider.Firebase.FirebaseAdmin
 {
-	public sealed class FirebaseChannelProviderClient : ChannelProviderDispatcher<IPushNotification>
+	public sealed class FirebaseAdminChannelProviderDispatcher : ChannelProviderDispatcher<IPushNotification>
 	{
-		public FirebaseChannelProviderClient(FirebaseOptions options)
+		private readonly FirebaseApp _app;
+		public FirebaseAdminChannelProviderDispatcher(FirebaseOptions options)
 		{
 			Guard.AgainstNull(options);
-			FirebaseApp.Create(FirebaseOptionsConverter.FromFirebaseOptions(options));
+			_app = FirebaseApp.Create(FirebaseOptionsConverter.FromFirebaseOptions(options));
 		}
 
 		public override async Task<IReadOnlyCollection<IDispatchResult?>> DispatchAsync(IPushNotification communication, IDispatchCommunicationContext communicationContext, CancellationToken cancellationToken)
 		{
-			List<Message> messages = new(communication.To.Count);
-			foreach (var recipient in communication.To)
+			List<Message> messages = new(communication.Recipient.Count);
+			foreach (var recipient in communication.Recipient)
 			{
 				messages.Add(new Message
 				{
@@ -40,14 +43,17 @@ namespace Transmitly.ChannelProvider.Firebase
 						Body = communication.Body,
 						ImageUrl = communication.ImageUrl
 					},
-					Token = recipient.IfType(IdentityAddress.Types.DeviceToken(), recipient.Value),
-					Topic = recipient.IfType(IdentityAddress.Types.Topic(), recipient.Value)
+					Token = recipient.IfType(PlatformIdentityAddress.Types.DeviceToken(), recipient.Value),
+					Topic = recipient.IfType(PlatformIdentityAddress.Types.Topic(), recipient.Value)
 				});
 			}
 
-			var response = await FirebaseMessaging.DefaultInstance.SendAllAsync(messages, cancellationToken);
+			var response = await FirebaseMessaging.GetMessaging(_app).SendEachAsync(messages, cancellationToken);
 
-			return response.Responses.Select(m => new FirebaseDispatchResult(m)).ToList();
+			var results = response.Responses.Select(m => new FirebaseDispatchResult(m)).ToList();
+			Dispatched(communicationContext, communication, results.Where(x => x.Status.IsSuccess()).ToList());
+			Error(communicationContext, communication, results.Where(x => !x.Status.IsSuccess()).ToList());
+			return results;
 		}
 
 		private static Dictionary<string, string?>? TryConvertToDictionary(object? content)
