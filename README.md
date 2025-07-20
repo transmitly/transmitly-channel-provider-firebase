@@ -14,13 +14,22 @@ Then add the channel provider using `AddFirebaseSupport()`:
 
 ```csharp
 using Transmitly;
-using Google.Apis.Auth.OAuth2;
 ...
-var communicationClient = new CommunicationsClientBuilder()
+var communicationClient =
+	new CommunicationsClientBuilder()
 	.AddFirebaseSupport(options =>
 	{
-		options.Credential = GoogleCredential.GetApplicationDefault();
+		options.Credential = FirebaseCredential.GetApplicationDefault();
 	})
+	.AddPipeline("WelcomeKit", options =>
+	{
+		options.AddPushNotification(push =>
+		{
+			push.Title.AddStringTemplate("Welcome!");
+			push.ImageUrl.AddStringTemplate("https://transmit.ly/assets/welcome.png");
+			push.Body.AddStringTemplate("Thanks for signing up! Here's 500 bonus points on us.");
+		});
+	});
 ```
 * See the [Transmitly](https://github.com/transmitly/transmitly) project for more details on what a channel provider is and how it can be configured.
 
