@@ -23,10 +23,8 @@
 		<PackageIcon>icon-dark.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/transmitly/transmitly-channel-provider-firebase.git</RepositoryUrl>
-		<PackageTags>push;push notifications;firebase;ios;android;web</PackageTags>
-		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeProjectReferenceDlls</TargetsForTfmSpecificBuildOutput>
-		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeReferenceAssemblies</TargetsForTfmSpecificContentInPackage>
-		<BuildProjectReferences Condition="'$(NoBuild)' == 'true'">false</BuildProjectReferences>
+		<PackageTags>push push notifications firebase ios android web</PackageTags>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
