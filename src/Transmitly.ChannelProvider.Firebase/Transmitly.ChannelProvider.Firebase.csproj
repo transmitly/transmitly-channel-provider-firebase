@@ -24,6 +24,9 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/transmitly/transmitly-channel-provider-firebase.git</RepositoryUrl>
 		<PackageTags>push;push notifications;firebase;ios;android;web</PackageTags>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeProjectReferenceDlls</TargetsForTfmSpecificBuildOutput>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeReferenceAssemblies</TargetsForTfmSpecificContentInPackage>
+		<BuildProjectReferences Condition="'$(NoBuild)' == 'true'">false</BuildProjectReferences>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -44,10 +47,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="All" />
-		<PackageReference Include="Transmitly" Version="0.2.0" />
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.Configuration\Transmitly.ChannelProvider.Firebase.Configuration.csproj" />
-	  <ProjectReference Include="..\Transmitly.ChannelProvider.Firebase.FirebaseAdmin\Transmitly.ChannelProvider.Firebase.FirebaseAdmin.csproj" />
+		<PackageReference Include="Transmitly" Version="0.2.1" />
+		<PackageReference Include="Transmitly.ChannelProvider.Firebase.Configuration" Version="0.2.1" />
+		<PackageReference Include="Transmitly.ChannelProvider.Firebase.FirebaseAdmin" Version="0.2.1" />
 	</ItemGroup>
 </Project>

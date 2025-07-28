@@ -19,7 +19,14 @@ using Transmitly.ChannelProvider.Firebase.FirebaseAdmin;
 namespace Transmitly
 {
 	public static class FirebaseChannelProviderExtensions
-	{		
+	{
+		/// <summary>
+		/// Adds Firebase support to Transmitly.
+		/// </summary>
+		/// <param name="communicationsClientBuilder">Client builder.</param>
+		/// <param name="options">Configuration options.</param>
+		/// <param name="providerId">Optional unique provider id.</param>
+		/// <returns><see cref="CommunicationsClientBuilder"/></returns>
 		public static CommunicationsClientBuilder AddFirebaseSupport(this CommunicationsClientBuilder communicationsClientBuilder, Action<FirebaseOptions> options, string? providerId = null)
 		{
 			var optionObj = new FirebaseOptions();
