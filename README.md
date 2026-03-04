@@ -49,6 +49,21 @@ var result = await client.DispatchAsync(
 	}));
 ```
 
+## Firebase Admin Configuration Parameters
+
+`AddFirebaseSupport(options => ..., providerId)` configures the Firebase Admin dispatcher.
+
+### `FirebaseOptions` parameters
+
+| Option | Required | Default | Description |
+| --- | --- | --- | --- |
+| `Credential` | Conditional | `null` | Credential source used to create `GoogleCredential`. |
+| `ProjectId` | No | `null` | Firebase project id. |
+| `ServiceAccountId` | No | `null` | Service account id. |
+| `AppName` | No | `default` | Firebase app instance name used for app reuse/isolation. |
+
+`Credential` is required unless the runtime environment can resolve credentials via Application Default Credentials.
+
 ## Recipients: Device Tokens and Topics
 
 The push channel supports:
@@ -68,21 +83,6 @@ await client.DispatchAsync(
 	TransactionModel.Create(new { orderId = "A-1001" }));
 ```
 
-## Firebase Credentials
-
-Supported credential creation methods:
-
-```csharp
-FirebaseCredential.GetApplicationDefault()
-FirebaseCredential.FromFile("firebase-service-account.json")
-FirebaseCredential.FromJson(json)
-FirebaseCredential.FromStream(stream)
-```
-
-You can also set:
-- `ProjectId`
-- `ServiceAccountId`
-- `AppName` (used to isolate/reuse Firebase SDK app instances)
 
 ## Multiple Firebase Provider Instances
 
