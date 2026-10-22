@@ -89,6 +89,7 @@ await client.DispatchAsync(
 `AddFirebaseSupport` accepts an optional `providerId`, which is useful for multi-tenant or multi-project setups.
 
 ```csharp
+using Transmitly;
 using Transmitly.ChannelProvider.Firebase.Configuration;
 
 var client = new CommunicationsClientBuilder()
