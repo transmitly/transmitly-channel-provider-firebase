@@ -60,9 +60,11 @@ var result = await client.DispatchAsync(
 | `Credential` | Conditional | `null` | Credential source used to create `GoogleCredential`. |
 | `ProjectId` | No | `null` | Firebase project id. |
 | `ServiceAccountId` | No | `null` | Service account id. |
-| `AppName` | No | `default` | Firebase app instance name used for app reuse/isolation. |
+| `AppName` | No | `default` | Firebase app name. If the host already created a Firebase app with this name, it's used as is; otherwise an app is kept per name and credential. |
 
 `Credential` is required unless the runtime environment can resolve credentials via Application Default Credentials.
+
+`FirebaseCredential.FromFile`, `FromJson` and `FromStream` expect a service account key and reject any other kind of credential, as Google recommends for credential files. To load something else, specify what it is: `FirebaseCredential.FromFile("adc.json", FirebaseCredentialType.AuthorizedUser)`.
 
 ## Recipients: Device Tokens and Topics
 
