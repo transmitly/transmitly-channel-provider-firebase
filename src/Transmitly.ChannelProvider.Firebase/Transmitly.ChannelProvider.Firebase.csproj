@@ -45,8 +45,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.403" PrivateAssets="All" />
 		<PackageReference Include="PolySharp" Version="1.16.0" PrivateAssets="All" />
-		<PackageReference Include="Transmitly" Version="0.4.6-2.49f3191" />
-		<PackageReference Include="Transmitly.ChannelProvider.Firebase.Configuration" Version="0.4.6-2.2cfdf24" />
-		<PackageReference Include="Transmitly.ChannelProvider.Firebase.FirebaseAdmin" Version="0.4.6-1.fcb2f14" />
+		<PackageReference Include="Transmitly" Version="0.5.0" />
+		<PackageReference Include="Transmitly.ChannelProvider.Firebase.Configuration" Version="0.5.0" />
+		<PackageReference Include="Transmitly.ChannelProvider.Firebase.FirebaseAdmin" Version="0.5.0" />
 	</ItemGroup>
 </Project>
